@@ -1,9 +1,9 @@
-const User = require('..backend/models/user');
+const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const nodemailer = require('nodemailer');
 
-exports.register = async (req, res) => {
+
+export const register = async (req, res) => {
   const { name, email, password, role } = req.body;
 
   try {
@@ -16,19 +16,19 @@ exports.register = async (req, res) => {
     const verificationLink = `${process.env.FRONTEND_URL}/verify/${token}`;
 
 
-    const transporter = nodemailer.createTransport({
-      service: 'Gmail',
-      auth: {
-        user: process.env.EMAIL,
-        pass: process.env.EMAIL_PASSWORD,
-      },
-    });
+    // const transporter = nodemailer.createTransport({
+    //   service: 'Gmail',
+    //   auth: {
+    //     user: process.env.EMAIL,
+    //     pass: process.env.EMAIL_PASSWORD,
+    //   },
+    // });
 
-    await transporter.sendMail({
-      to: user.email,
-      subject: 'Verify Your Account',
-      html:<p> Click <a href="${verificationLink}">Verify</a> to verify your email and activate your account.</p>,
-    });
+    // await transporter.sendMail({
+    //   to: user.email,
+    //   subject: 'Verify Your Account',
+    //   html:<p> Click <a href="${verificationLink}">Verify</a> to verify your email and activate your account.</p>,
+    // });
 
     res.status(201).json({ message: 'User registered. Check email for verification link.' });
   } catch (err) {

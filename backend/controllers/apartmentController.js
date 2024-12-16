@@ -1,6 +1,6 @@
-const Apartment = require('../models/Apartment');
+const Apartment = require('../models/apartment');
 
-exports.addApartment = async (req, res) => {
+export const addApartment = async (req, res) => {
   try {
     const { location, type, rent, amenities, images } = req.body;
     const landlordId = req.user.id;
@@ -21,7 +21,7 @@ exports.addApartment = async (req, res) => {
   }
 };
 
-exports.getApartments = async (req, res) => {
+export const getApartments = async (req, res) => {
   try {
     const apartments = await Apartment.find({}).populate('landlord', 'name email');
     res.json(apartments);
@@ -30,7 +30,7 @@ exports.getApartments = async (req, res) => {
   }
 };
 
-exports.updateApartment = async (req, res) => {
+export const updateApartment = async (req, res) => {
   try {
     const updates = req.body;
     const apartment = await Apartment.findByIdAndUpdate(req.params.id, updates, { new: true });
@@ -41,7 +41,7 @@ exports.updateApartment = async (req, res) => {
   }
 };
 
-exports.deleteApartment = async (req, res) => {
+export const deleteApartment = async (req, res) => {
   try {
     const apartment = await Apartment.findByIdAndDelete(req.params.id);
     if (!apartment) return res.status(404).json({ message: 'Apartment not found' });

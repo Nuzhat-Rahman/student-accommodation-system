@@ -4,6 +4,11 @@ const cors = require('cors');
 
 dotenv.config();
 
+const apartmentRoute = require('./routes/apartmentRoute')
+const auth = require('./routes/auth')
+app.use(apartmentRoute)
+app.use(auth)
+
 const app = express();
 app.use(express.json());
 app.use(cors());
