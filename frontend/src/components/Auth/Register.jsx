@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import "../styles.css"; 
+
 
 const Register = () => {
   const [userData, setUserData] = useState({
