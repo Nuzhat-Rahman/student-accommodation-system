@@ -1,7 +1,9 @@
-const Apartment = require('../models/apartment');
+const Apartment = require("../models/apartment");
 
-export const addApartment = async (req, res) => {
+const addApartment = async (req, res) => {
+  
   try {
+    console.log(req.body);
     const { location, type, rent, amenities, images } = req.body;
     const landlordId = req.user.id;
 
@@ -17,36 +19,53 @@ export const addApartment = async (req, res) => {
     await apartment.save();
     res.status(201).json(apartment);
   } catch (err) {
+    
     res.status(400).json({ error: err.message });
   }
 };
 
-export const getApartments = async (req, res) => {
+const getApartments = async (req, res) => {
   try {
-    const apartments = await Apartment.find({}).populate('landlord', 'name email');
+    const apartments = await Apartment.find({}).populate(
+      "landlord",
+      "name email"
+    );
     res.json(apartments);
   } catch (err) {
-    res.status(500).json({ error: 'Failed to fetch apartments' });
+    res.status(500).json({ error: "Failed to fetch apartments" });
   }
 };
 
-export const updateApartment = async (req, res) => {
+const updateApartment = async (req, res) => {
   try {
     const updates = req.body;
-    const apartment = await Apartment.findByIdAndUpdate(req.params.id, updates, { new: true });
-    if (!apartment) return res.status(404).json({ message: 'Apartment not found' });
+    const apartment = await Apartment.findByIdAndUpdate(
+      req.params.id,
+      updates,
+      { new: true }
+    );
+    if (!apartment)
+      return res.status(404).json({ message: "Apartment not found" });
     res.json(apartment);
   } catch (err) {
-    res.status(400).json({ error: 'Failed to update apartment' });
+    res.status(400).json({ error: "Failed to update apartment" });
   }
 };
 
-export const deleteApartment = async (req, res) => {
+const deleteApartment = async (req, res) => {
   try {
     const apartment = await Apartment.findByIdAndDelete(req.params.id);
-    if (!apartment) return res.status(404).json({ message: 'Apartment not found' });
-    res.json({ message: 'Apartment deleted successfully' });
+    if (!apartment)
+      return res.status(404).json({ message: "Apartment not found" });
+    res.json({ message: "Apartment deleted successfully" });
   } catch (err) {
-    res.status(500).json({ error: 'Failed to delete apartment' });
+    res.status(500).json({ error: "Failed to delete apartment" });
   }
+};
+
+module.exports = {
+  addApartment,
+  getApartments,
+  updateApartment,
+  deleteApartment,
 };
