@@ -38,7 +38,7 @@ const Register = () => {
           </div>
         )}
         <form className="space-y-4" onSubmit={handleSubmit}>
-          <div classname= "m-4">
+          <div>
             <input
               type="text"
               name="name"
@@ -46,7 +46,7 @@ const Register = () => {
               value={userData.name}
               onChange={handleChange}
               required
-              className="w-full m-4 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
           <div>
