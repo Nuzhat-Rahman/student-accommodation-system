@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "../../utils/api";
-import "frontend/src/styles/auth.css";
+import "../../styles/auth.css";
 
 
 const Login = () => {
