@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "../../utils/api";
-import "frontend/src/styles/auth.css";
-
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -21,13 +19,38 @@ const Login = () => {
   };
 
   return (
-    <div className="auth-form-container">
-      <h2>Login</h2>
-      <form className="auth-form">
-        <input type="email" placeholder="Email Address" required />
-        <input type="password" placeholder="Password" required />
-        <button type="submit">Login</button>
-      </form>
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-lg">
+        <h2 className="text-2xl font-semibold text-center mb-6">Login</h2>
+        <form className="space-y-4" onSubmit={handleLogin}>
+          <div>
+            <input
+              type="email"
+              placeholder="Email Address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+          </div>
+          <div>
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+          </div>
+          <button
+            type="submit"
+            className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition duration-200"
+          >
+            Login
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
