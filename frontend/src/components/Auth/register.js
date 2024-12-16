@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import "frontend/src/styles/auth.css";
+
 
 const Register = () => {
   const [userData, setUserData] = useState({
@@ -27,38 +29,12 @@ const Register = () => {
   };
 
   return (
-    <div>
+    <div className="auth-form-container">
       <h2>Register</h2>
-      <form onSubmit={handleSubmit}>
-        {error && <p>{error}</p>}
-        <input
-          type="text"
-          name="name"
-          placeholder="Name"
-          onChange={handleChange}
-          value={userData.name}
-          required
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          onChange={handleChange}
-          value={userData.email}
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          onChange={handleChange}
-          value={userData.password}
-          required
-        />
-        <select name="role" onChange={handleChange} value={userData.role}>
-          <option value="student">Student</option>
-          <option value="landlord">Landlord</option>
-        </select>
+      <form className="auth-form">
+        <input type="text" placeholder="Full Name" required />
+        <input type="email" placeholder="Email Address" required />
+        <input type="password" placeholder="Password" required />
         <button type="submit">Register</button>
       </form>
     </div>
