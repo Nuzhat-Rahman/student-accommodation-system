@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ApartmentDetails from "./components/Apartment/ApartmentDetails";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
+import "./App.css"
 
 function App() {
   return (
