@@ -31,7 +31,7 @@ const RegisterCard = () => {
         <Input
           value={formData.username}
           onChange={handleChange}
-          placeholder={"someone@example.com"}
+          placeholder={"enter a username"}
           id="username"
           type="text"
           label="Username"
@@ -56,6 +56,7 @@ const RegisterCard = () => {
           label={"User Type"}
           onChange={handleChange}
           value={formData.userType}
+          id="userType"
           options={[
             { value: "student", label: "Student" },
             { value: "landlord", label: "Landlord" },

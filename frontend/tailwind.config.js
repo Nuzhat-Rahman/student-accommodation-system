@@ -1,6 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-<<<<<<< HEAD
   content: ["./src/**/*.{js,jsx,ts,tsx}", "./index.html"],
   theme: {
     extend: {
@@ -32,12 +31,3 @@ export default {
   },
   plugins: [],
 };
-=======
-  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-}
-
->>>>>>> feature/nuhash

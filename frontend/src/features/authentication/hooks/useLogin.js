@@ -2,7 +2,7 @@ import { useState } from "react";
 import { axios } from "../../../utils/RequestHandler";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { authActions } from "../../../context/slices/auth.slice";
+import { authActions } from "../../../context/auth.slice";
 
 export const useLogin = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -31,7 +31,8 @@ export const useLogin = () => {
         dispatch(authActions.setVerificationEmail(formData.email));
         navigate("/verification");
       }
-      setError(err.message);
+      console.log(err);
+      setError(err.response.data.message);
     }
 
     setLoading(false);
