@@ -6,12 +6,13 @@ const Select = (props) => {
       </label>
       <select
         id={props.id}
+        name={props.id}
         className="bg-gray-100 border-2 border-gray-300 rounded-lg w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-primary"
         onChange={props.onChange}
         value={props.value}
       >
         {props.options.map((option, index) => (
-          <option key={index} value={option.value}>
+          <option key={index} value={option.value} className="text-black">
             {option.label}
           </option>
         ))}
