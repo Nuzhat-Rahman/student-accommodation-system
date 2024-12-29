@@ -1,0 +1,15 @@
+meta {
+  name: Get Apartment By ID
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/apartment/67686a060f6c90e6a367b5d3
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}

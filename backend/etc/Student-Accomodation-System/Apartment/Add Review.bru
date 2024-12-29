@@ -1,0 +1,22 @@
+meta {
+  name: Add Review
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseUrl}}/apartment/67686a060f6c90e6a367b5d3/review
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+    "rating":2,
+    "comment":"Bad"
+  }
+}

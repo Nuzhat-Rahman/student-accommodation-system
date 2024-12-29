@@ -1,0 +1,21 @@
+meta {
+  name: Update
+  type: http
+  seq: 5
+}
+
+put {
+  url: {{baseUrl}}/apartment/6766f3689b0c923416c7d7d3
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{accessToken}}
+}
+
+body:json {
+  {
+    "rent": 2500
+  }
+}
