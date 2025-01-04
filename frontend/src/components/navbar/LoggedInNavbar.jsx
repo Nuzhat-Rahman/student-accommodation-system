@@ -21,6 +21,8 @@ const LoggedInNavbar = () => {
           <NavItem path="/listing" text="Listing" />
         )}
         <NavItem path="/profile" text="Profile" />
+        <NavItem path="/chat" text="Chat" />
+        <NavItem path="/transactions" text="Transactions" />
         <NavItem path="/logout" text="Logout" />
       </div>
       <div
@@ -65,6 +67,16 @@ const LoggedInNavbar = () => {
             <NavItem
               path="/profile"
               text="Profile"
+              callback={() => setIsOpen(false)}
+            />
+            <NavItem
+              path="/chat"
+              text="Chat"
+              callback={() => setIsOpen(false)}
+            />
+            <NavItem
+              path="/transactions"
+              text="Transactions"
               callback={() => setIsOpen(false)}
             />
             <NavItem

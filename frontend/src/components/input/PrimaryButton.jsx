@@ -9,7 +9,7 @@ const PrimaryButton = (props) => {
         onClick={props.onClick}
         disabled={props.disabled}
       >
-        <Spinner variant="light" />
+        {props.disabled && <Spinner variant="light" />}
         {props.children}
       </button>
     </div>

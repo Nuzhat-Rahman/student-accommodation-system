@@ -5,14 +5,14 @@ const AppartmentCard = ({ appartment }) => {
 
   return (
     <div
-      className="w-[350px] h-[400px] p-4 flex-shrink-0 flex flex-col items-center gap-4 rounded-lg shadow-md justify-between items-start cursor-pointer"
+      className="w-[350px] h-[500px] p-4 flex-shrink-0 flex flex-col items-center gap-4 rounded-lg shadow-md justify-start items-start cursor-pointer"
       onClick={() => {
         navigate(`/appartments/${appartment.id}`);
       }}
     >
       <div className="w-full">
         <img
-          src={`${import.meta.env.VITE_APP_API_URL}/${appartment.images[0]}`}
+          src={appartment.images[0]}
           alt="appartment"
           className="w-full h-48 object-cover rounded-lg"
         />
