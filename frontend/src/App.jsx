@@ -19,16 +19,19 @@ import LoadingComponent from "./components/LoadingComponent";
 import { useSelector } from "react-redux";
 import ListingPage from "./features/listing/pages/ListingPage";
 import ListingDetailsPage from "./features/listing/pages/ListingDetailsPage";
+import HomeNavigator from "./components/HomeNavigator";
+import ChatPage from "./features/chat/pages/ChatPage";
+import TransactionPage from "./features/transactions/pages/TransactionPage";
 const ModalRouter = lazy(() => import("./ModalRouter"));
 
 function App() {
   const user = useSelector((state) => state.auth.user);
-
   return (
     <>
       <Routes>
         <Route path="/*" element={<PublicOutlet />}>
-          <Route path="" element={<HomePage />} />
+          <Route path="" element={<HomeNavigator />} />
+          <Route path="home" element={<HomePage />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="register" element={<RegisterPage />} />
           <Route path="verification" element={<EmailVerification />} />
@@ -38,6 +41,7 @@ function App() {
         <Route path="/*" element={<PrivateOutlet />}>
           <Route path="logout" element={<LogoutPage />} />
           <Route path="dashboard" element={<DashboardPage />} />
+          <Route path="transactions" element={<TransactionPage />} />
           {user.userType === "student" && (
             <>
               <Route path="appartments" element={<AppartmentPage />} />
@@ -55,6 +59,7 @@ function App() {
             </>
           )}
           <Route path="profile" element={<ProfilePage />} />
+          <Route path="chat" element={<ChatPage />} />
         </Route>
         <Route path="/error404" element={<Error error={"NOT FOUND"} />} />
         <Route path="/error401" element={<Error error={"UNAUTHORIZED"} />} />

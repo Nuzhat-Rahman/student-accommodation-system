@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { axios } from "../../../utils/RequestHandler";
 import { useDispatch, useSelector } from "react-redux";
 import { reviewActions } from "../context/review-slice";
+import { useNavigate } from "react-router-dom";
 
 export const useAppartmentDetails = (id) => {
   const [appartment, setAppartment] = useState({});
@@ -10,6 +11,25 @@ export const useAppartmentDetails = (id) => {
   const [selectedAddress, setSelectedAddress] = useState(null);
   const dispatch = useDispatch();
   const reviews = useSelector((state) => state.review.reviews);
+  const navigate = useNavigate();
+
+  const addToFavorites = async () => {
+    try {
+      if (!appartment.isFavorite) {
+        await axios.post(`/user/add-favorite-apartment`, { apartmentId: id });
+        setAppartment({ ...appartment, isFavorite: true });
+      } else {
+        await axios.post(`/user/remove-favorite-apartment`, {
+          apartmentId: id,
+        });
+        setAppartment({ ...appartment, isFavorite: false });
+      }
+    } catch (error) {
+      setError(
+        error.response.data.message || "Failed to add appartment to favorites"
+      );
+    }
+  };
 
   const fetchAppartmentDetails = async () => {
     try {
@@ -23,6 +43,7 @@ export const useAppartmentDetails = (id) => {
         address: response.data.location.address,
       });
     } catch (error) {
+      console.log(error);
       setError(
         error.response.data.message || "Failed to fetch appartment details"
       );
@@ -44,6 +65,20 @@ export const useAppartmentDetails = (id) => {
     }
   };
 
+  const fetchSession = async (receiverId) => {
+    setLoading(true);
+    try {
+      const response = await axios.post(`/message/session`, {
+        receiverId,
+      });
+      navigate(`/chat?id=${response.data.sessionId}`);
+    } catch (error) {
+      setError(error.response.data.message || "Failed to create session");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     fetchAppartmentDetails();
     fetchReviews();
@@ -54,6 +89,8 @@ export const useAppartmentDetails = (id) => {
     loading,
     appartment,
     selectedAddress,
+    addToFavorites,
+    fetchSession,
     reviews,
   };
 };
