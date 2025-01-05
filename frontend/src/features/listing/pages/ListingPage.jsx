@@ -76,26 +76,6 @@ const ListingPage = () => {
                 />
               </div>
 
-              <div className="w-full h-full px-4 flex flex-col gap-6 items-center">
-                {listings &&
-                  listings.map((appartment, index) => (
-                    <ListingCard key={index} appartment={appartment} />
-                  ))}
-              </div>
-            </div>
-          </TabPanel>
-          <TabPanel className={`w-full`}>
-            <div className="w-full h-full">
-              <div className="w-full px-4 py-4 mx-auto flex justify-center items-center">
-                <Pagination
-                  totalPages={total}
-                  page={page}
-                  limit={limit}
-                  siblingCount={1}
-                  onPageChange={(page) => setPage(page)}
-                />
-              </div>
-
               <div className="w-full h-full px-4  flex flex-col gap-6 items-center">
                 {listings &&
                   listings.map((appartment, index) => (

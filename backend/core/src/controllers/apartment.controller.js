@@ -199,8 +199,6 @@ getBookedAppartments = async (req, res) => {
               cond: {
                 $and: [
                   { $eq: ["$$booking.status", "Approved"] },
-                  { $gte: ["$$booking.checkIn", today] },
-                  { $lte: ["$$booking.checkOut", today] },
                 ],
               },
             },
@@ -223,8 +221,6 @@ getBookedAppartments = async (req, res) => {
               cond: {
                 $and: [
                   { $eq: ["$$booking.status", "Approved"] },
-                  { $gte: ["$$booking.checkIn", today] },
-                  { $lte: ["$$booking.checkOut", today] },
                 ],
               },
             },
