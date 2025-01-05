@@ -1,28 +1,41 @@
 {
-  "name": "student-accommodation-system",
+  "name": "student-accomodation-system",
   "version": "1.0.0",
-  "description": "A MERN stack student accommodation project",
-  "main": "server.js",
+  "description": "Student Accomodation System BRAC CSE 470",
+  "main": "index.js",
   "scripts": {
-    "start": "node backend/server.js",
-    "backend": "cd backend && npm run dev",
+    "core": "cd backend/core && npm run dev",
+    "worker": "cd backend/worker && npm run dev",
+    "backend": "concurrently \"npm run core\" \"npm run worker\"",
     "frontend": "cd frontend && npm run dev",
     "dev": "concurrently \"npm run backend\" \"npm run frontend\""
   },
-  "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^10.0.0",
-    "express": "^4.18.1",
-    "mongoose": "^8.9.0"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mirzaazwad/Student-Accomodation-System.git"
   },
-  "devDependencies": {
-    "autoprefixer": "^10.4.20",
-    "concurrently": "^8.2.0",
-    "nodemon": "^3.1.9",
-    "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.16"
-  },
-  "author": "Your Name",
+  "keywords": [
+    "JavaScript",
+    "MERN",
+    "MongoDB",
+    "Express",
+    "Node",
+    "React",
+    "TailwindCSS",
+    "Vite"
+  ],
+  "author": "Nuhash Kabir Neeha, Nuzhat Rahman",
   "license": "MIT",
-  "keywords": []
+  "bugs": {
+    "url": "https://github.com/mirzaazwad/Student-Accomodation-System/issues"
+  },
+  "homepage": "https://github.com/mirzaazwad/Student-Accomodation-System#readme",
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  },
+  "dependencies": {
+    "@headlessui/react": "^2.2.0",
+    "joi": "^17.13.3",
+    "tailwind-merge": "^2.6.0"
+  }
 }
